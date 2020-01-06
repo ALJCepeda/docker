@@ -17,6 +17,6 @@ RUN bash -c 'chmod +x /root/git.entrypoint.sh &&\
     git checkout ${GIT_BRANCH} &&\
     npm ci'
 
-WORKDIR /documents
-VOLUME ["/documents"]
+WORKDIR /documents/repo
+VOLUME ["/documents/repo"]
 ENTRYPOINT ["/root/git.entrypoint.sh"]
