@@ -4,8 +4,9 @@ ARG GIT_URL
 ARG GIT_BRANCH=dev
 
 RUN echo "#!/usr/bin/env bash\n\
-if [ ! -f "/documents/repo/package.json" ]\n\
+if [ ! -f "/repo/package.json" ]\n\
 then\n\
+  setopt -s glob_dots \n\
   mv /root/repo/* /repo \n\
 fi\n\
 /bin/zsh \
