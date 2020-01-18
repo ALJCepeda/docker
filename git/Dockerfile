@@ -9,7 +9,7 @@ RUN bash -c 'git clone ${GIT_URL} /root/repo &&\
   npm ci'
 
 RUN echo "#!/usr/bin/env bash \n\
-if [ ! -f "/repo/package.json" ] \n\
+if [ ! -f "/mnt/host/package.json" ] \n\
 then \n\
   setopt -s glob_dots \n\
   mv /root/repo/* /mnt/host \n\
