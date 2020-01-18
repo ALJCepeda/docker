@@ -21,4 +21,4 @@ RUN bash -c '\
 
 VOLUME ["/mnt/host"]
 WORKDIR /mnt/host
-CMD /bin/zsh
+CMD ["/bin/zsh"]
