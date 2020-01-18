@@ -24,5 +24,7 @@ RUN bash -c '\
   nvm alias default $NODE_VERSION &&\
   nvm use default'
 
-EXPOSE 3000
+VOLUME ["/mnt/host"]
+WORKDIR /mnt/host
+
 ENTRYPOINT ["/root/dev.entrypoint.sh"]
