@@ -5,11 +5,6 @@ ENV NODE_VERSION=$NODE_VERSION
 ENV NVM_DIR=/root/.nvm
 ENV PATH=${NVM_DIR}/versions/node/v${NODE_VERSION}/bin/:$PATH
 
-RUN echo '#!/usr/bin/env bash\n\
-    /bin/zsh \
-  ' > /root/dev.entrypoint.sh &&\
-  chmod +x /root/dev.entrypoint.sh
-
 RUN bash -c '\
   apt-get update &&\
   apt-get -y install curl wget git vim zsh apt-utils &&\
@@ -26,5 +21,4 @@ RUN bash -c '\
 
 VOLUME ["/mnt/host"]
 WORKDIR /mnt/host
-
-ENTRYPOINT ["/root/dev.entrypoint.sh"]
+CMD /bin/zsh
