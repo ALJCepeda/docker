@@ -9,10 +9,10 @@ RUN bash -c 'git clone ${GIT_URL} /root/repo &&\
   npm ci'
 
 RUN echo "#!/usr/bin/env bash \n\
-if [ ! -f "/mnt/host/package.json" ] \n\
+if [ ! -d "/mnt/repo" ] \n\
 then \n\
   setopt -s glob_dots \n\
-  mv /root/repo/* /mnt/host \n\
+  mv /root/repo/* /mnt/repo \n\
 fi \n\
 zsh \n\
 " > /git.entrypoint.sh &&\

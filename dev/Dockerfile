@@ -19,6 +19,25 @@ RUN bash -c '\
   nvm alias default $NODE_VERSION &&\
   nvm use default'
 
-VOLUME ["/mnt/host"]
+RUN echo "#!/usr/bin/env bash \n\
+  if [ -d "/mnt/.ssh" ] \n\
+  then \n\
+    mkdir /root/.ssh \n\
+    cp /mnt/.ssh/* /root/.ssh \n\
+    chmod 0644 /root/.ssh/id_rsa.pub \n\
+    chmod 0600 /root/.ssh/id_rsa \n\
+    if [ -f "/root/.ssh/known_hosts" ] \n\
+    then \n\
+      chmod 0644 /root/.ssh/known_hosts \n\
+    fi \n\
+    if [ -f "/root/.ssh/authorized_keys" ] \n\
+    then \n\
+      chmod 0600 /root/.ssh/authorized_keys \n\
+    fi \n\
+  fi \n\
+  zsh \n\
+" > /dev.entrypoint.sh && chmod +x /dev.entrypoint.sh
+
+VOLUME ["/mnt/host", "/mnt/.ssh"]
 WORKDIR /mnt/host
-CMD ["/bin/zsh"]
+ENTRYPOINT ["/dev.entrypoint.sh"]
