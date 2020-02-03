@@ -1,5 +1,7 @@
 FROM ubuntu:bionic
 
+
+
 ARG NODE_VERSION=12.14.0
 ENV NODE_VERSION=$NODE_VERSION
 ENV NVM_DIR=/root/.nvm
@@ -38,6 +40,6 @@ RUN echo "#!/usr/bin/env bash \n\
   zsh \n\
 " > /dev.entrypoint.sh && chmod +x /dev.entrypoint.sh
 
-VOLUME ["/mnt/host", "/mnt/.ssh"]
+VOLUME ["/mnt/host", "/mnt/.ssh", "/mnt/root"]
 WORKDIR /mnt/host
 ENTRYPOINT ["/dev.entrypoint.sh"]
