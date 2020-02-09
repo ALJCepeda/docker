@@ -22,6 +22,9 @@ RUN bash -c '\
   nvm use default'
 
 RUN echo "#!/usr/bin/env bash \n\
+  if [ -f "/mnt/.gitconfig" ] \n\
+    cp /mnt/.gitconfig /root/.gitconfig \n\
+  fi \n\
   if [ -d "/mnt/.ssh" ] \n\
   then \n\
     mkdir /root/.ssh \n\
@@ -40,6 +43,6 @@ RUN echo "#!/usr/bin/env bash \n\
   zsh \n\
 " > /dev.entrypoint.sh && chmod +x /dev.entrypoint.sh
 
-VOLUME ["/mnt/host", "/mnt/.ssh", "/mnt/root"]
+VOLUME ["/mnt/host", "/mnt/root"]
 WORKDIR /mnt/host
 ENTRYPOINT ["/dev.entrypoint.sh"]
