@@ -8,6 +8,7 @@ ENV PATH=${NVM_DIR}/versions/node/v${NODE_VERSION}/bin/:$PATH
 VOLUME ["/mnt/host"]
 
 COPY . .
-RUN bash provision.bash;
+RUN bash provision.bash
 
 WORKDIR /mnt/host
+CMD "/bin/zsh"
