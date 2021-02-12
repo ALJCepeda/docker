@@ -9,5 +9,6 @@ VOLUME ["/mnt/host", "/build"]
 
 COPY . .
 RUN bash provision.bash; rm provision.bash
+CMD zsh
 
 WORKDIR /mnt/host
