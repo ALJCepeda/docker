@@ -1,5 +1,5 @@
 apt-get update
-apt-get -y install apt-utils curl wget git vim zsh
+apt-get -y install apt-utils curl wget git vim zsh yarn
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh
 sed -i "s/ZSH_THEME=.*/ZSH_THEME=\"bira\"/" ~/.zshrc
 echo "source $NVM_DIR/nvm.sh" >> ~/.zshrc
