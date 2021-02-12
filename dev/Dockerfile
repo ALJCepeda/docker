@@ -5,10 +5,10 @@ ENV NODE_VERSION=$NODE_VERSION
 ENV NVM_DIR=/root/.nvm
 ENV PATH=${NVM_DIR}/versions/node/v${NODE_VERSION}/bin/:$PATH
 
-VOLUME ["/mnt/host", "/build"]
+VOLUME ["/host/app"]
 
 COPY . .
 RUN bash provision.bash; rm provision.bash
 CMD zsh
 
-WORKDIR /mnt/host
+WORKDIR /host/app
